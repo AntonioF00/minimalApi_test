@@ -12,6 +12,13 @@ namespace minimalApi_test.Enum
             Urbino,
             Ancona
         }
-	}
+
+        public static T RandomEnumValue<T>()
+        {
+            Random _rnd = new Random();
+            var v = Citys.GetValues(typeof(T));
+            return (T)v.GetValue(_rnd.Next(v.Length));
+        }
+    }
 }
 

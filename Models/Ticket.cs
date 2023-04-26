@@ -7,6 +7,7 @@ namespace minimalApi_test.Models
 		public string name { get; set; }
 		public double price { get; set; }
 		public string route { get; set; }
+		public bool aviable { get; set; }
 	}
 }
 
