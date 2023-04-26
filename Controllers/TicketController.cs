@@ -36,8 +36,9 @@ namespace minimalApi_test.Controllers
         }
 
         [HttpGet(Name = "BuyTicket/{id}")]
-        public IEnumerable<Ticket> Buy(Guid id)
+        public IEnumerable<Ticket> BuyId(Guid id)
         {
+            _tickets.Find(x => x.id.Equals(id)).aviable = false;
             return _tickets.FindAll(x => x.aviable == false).ToList();
         }
 
