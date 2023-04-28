@@ -1,20 +1,14 @@
-﻿<Properties StartupConfiguration="{DE6E17C7-153C-4EAC-B79C-5DB6AD3FE574}|https">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TicketController.cs">
+﻿<Properties StartupConfiguration="{DE6E17C7-153C-4EAC-B79C-5DB6AD3FE574}|http">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Enums/Enum.cs">
     <Files>
-      <File FileName="Controllers/TicketController.cs" Line="13" Column="53" />
+      <File FileName="Controllers/TicketController.cs" Line="10" Column="28" />
       <File FileName="Properties/launchSettings.json" Line="39" Column="2" />
-      <File FileName="Program.cs" Line="10" Column="27" />
-      <File FileName="appsettings.json" Line="1" Column="1" />
-      <File FileName="appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="Models/Ticket.cs" Line="10" Column="22" />
-      <File FileName="Datas/ConnectionFactory.cs" Line="1" Column="1" />
-      <File FileName="Datas/DbController.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="25" Column="1" />
+      <File FileName="appsettings.json" />
+      <File FileName="appsettings.Development.json" />
+      <File FileName="Models/Ticket.cs" />
+      <File FileName="Datas/ConnectionFactory.cs" />
+      <File FileName="Datas/DbController.cs" />
       <File FileName="Enums/Enum.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -22,10 +16,9 @@
         <State name="__root__">
           <Node name="minimalApi_test" expanded="True">
             <Node name="minimalApi_test" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="TicketController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Enums" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
@@ -33,5 +26,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.minimalApi__test PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/antonioflorio/Projects/minimalApi_test/Controllers/TicketController.cs" relfile="Controllers/TicketController.cs" line="33" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
