@@ -3,7 +3,7 @@ using System;
 using System.Data.Common;
 using System.Data.SqlClient;
 
-namespace minimalApi_test.Data
+namespace minimalApi_test.Datas
 {
     public class ConnectionFactory
     {

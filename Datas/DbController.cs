@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace minimalApi_test.Data
+namespace minimalApi_test.Datas
 {
     public class DbController
     {

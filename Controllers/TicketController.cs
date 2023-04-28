@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using minimalApi_test.Data;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using minimalApi_test.Datas;
 using minimalApi_test.Models;
-using static minimalApi_test.Enum.Enum;
+using static minimalApi_test.Enums.Enum;
 
 namespace minimalApi_test.Controllers
 {
@@ -19,23 +20,33 @@ namespace minimalApi_test.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
             _dbController = new DbController(_connectionString);
             _tickets = new List<Ticket>();
-            _rnd = new Random();
             Init();
 		}
 
-        [HttpGet(Name = "GetTicket/{id}")]
-        public IEnumerable<Ticket> GetId(Guid id)
+        [HttpGet]
+        [Route("GetTicketId/{id}")]
+        public IEnumerable<Ticket> GetTid(Guid Id)
         {
-            return _tickets.FindAll(x => x.id.Equals(id)).ToList();
+            Ticket t = _tickets.Find(x => x.id.Equals(Id));
+            List<Ticket> tl = new List<Ticket>();
+            tl.Add(t);
+            return tl;
         }
 
-        [HttpGet(Name = "GetTicket")]
-        public IEnumerable<Ticket> Get()
-        {
-            return _tickets.ToList();
-        }
+        [HttpGet]
+        [Route("GetTickets")]
+        public IEnumerable<Ticket> GetT() => _tickets.ToArray();
 
-        [HttpGet(Name = "BuyTicket/{id}")]
+        [HttpGet]
+        [Route("GetNonAviableTickets")]
+        public IEnumerable<Ticket> GetNonAviableT() => _tickets.FindAll(x => x.aviable == false).ToList();
+
+        [HttpGet]
+        [Route("GetAviableTickets")]
+        public IEnumerable<Ticket> GetAviableT() => _tickets.FindAll(x => x.aviable == true).ToList();
+
+        [HttpGet]
+        [Route("BuyTicket/{id}")]
         public IEnumerable<Ticket> BuyId(Guid id)
         {
             _tickets.Find(x => x.id.Equals(id)).aviable = false;
@@ -44,11 +55,12 @@ namespace minimalApi_test.Controllers
 
         public void Init()
         {
-            for(int i = 0; i < 10; i++)
+            var _rnd = new Random(DateTime.Now.Microsecond);
+            for (int i = 0; i < 10; i++)
             {
                 var t = new Ticket
                 {
-                    id = new Guid(),
+                    id = Guid.NewGuid(),
                     name = $"TICKET-{i}",
                     price = _rnd.NextDouble(),
                     route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"

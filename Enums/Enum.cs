@@ -1,5 +1,5 @@
 ﻿using System;
-namespace minimalApi_test.Enum
+namespace minimalApi_test.Enums
 {
 	public class Enum
 	{
