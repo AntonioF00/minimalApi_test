@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using minimalApi_test.Datas;
 using minimalApi_test.Models;
 using static minimalApi_test.Enums.Enum;
@@ -10,7 +9,6 @@ namespace minimalApi_test.Controllers
     [Route("[controller]")]
     public class TicketController : ControllerBase
     {
-        private readonly Random _rnd;
         private readonly DbController _dbController;
         private readonly string _connectionString;
         private List<Ticket> _tickets;
