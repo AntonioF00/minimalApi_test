@@ -1,17 +1,5 @@
 ﻿<Properties StartupConfiguration="{DE6E17C7-153C-4EAC-B79C-5DB6AD3FE574}|http">
-  <MonoDevelop.Ide.ItemProperties.minimalApi__test PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.Development.json">
-    <Files>
-      <File FileName="Controllers/TicketController.cs" Line="1" Column="10" />
-      <File FileName="Properties/launchSettings.json" />
-      <File FileName="Program.cs" />
-      <File FileName="appsettings.json" />
-      <File FileName="appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="Models/Ticket.cs" Line="11" Column="1" />
-      <File FileName="Datas/ConnectionFactory.cs" Line="1" Column="1" />
-      <File FileName="Datas/DbController.cs" Line="1" Column="1" />
-      <File FileName="Enums/Enum.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -23,19 +11,18 @@
               <Node name="Loggers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="appsettings.json" expanded="True">
-                <Node name="appsettings.Development.json" selected="True" />
-              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.minimalApi__test PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
