@@ -35,6 +35,9 @@ namespace minimalApi_test.Controllers
             _dataManager = dataManager;
         }
 
+
+        //migliorare la gestione degli errori, con questi return non mi piace troppo
+
         [HttpGet]
         [Route("GetAllTickets")]
         public IEnumerable<object> GetAllTickets()
