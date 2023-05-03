@@ -5,9 +5,7 @@
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/minimalApi_test.runtimeconfig.json
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/minimalApi_test.dll
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/minimalApi_test.pdb
-/Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/Microsoft.OpenApi.dll
-/Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/Npgsql.dll
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/System.Data.SqlClient.dll
 /Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/runtimes/win-arm64/native/sni.dll

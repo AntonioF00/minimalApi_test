@@ -38,17 +38,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.5, )"
-            },
             "Microsoft.OpenApi": {
               "target": "Package",
               "version": "[1.6.3, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[7.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
