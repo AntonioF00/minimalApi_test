@@ -26,7 +26,7 @@ namespace minimalApi_test.Components
                 {
                     Id = $"TCKATMA{_counter.ToString().PadLeft(3,'0')}",
                     Description = $"Biglietto tratta {$"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"}",
-                    Price = _rnd.Next(),
+                    Price = new decimal(_rnd.NextSingle()),
                     Route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}",
                     Aviable = _rnd.Next(2) == 1
                 };
@@ -37,6 +37,15 @@ namespace minimalApi_test.Components
         public List<Ticket> getTicketList()
         {
             return _ticketsList;
+        }
+
+        public void ChangeAviable(string id)
+        {
+            foreach(var e in _ticketsList)
+            {
+                if (e.Id.Equals(id))
+                    e.Aviable = false;
+            }
         }
     }
 

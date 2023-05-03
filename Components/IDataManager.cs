@@ -8,6 +8,7 @@ namespace minimalApi_test.Components
 	{
 		public void Initializate();
 		public List<Ticket> getTicketList();
+		public void ChangeAviable(string a);
 	}
 }
 

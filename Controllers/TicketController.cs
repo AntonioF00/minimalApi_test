@@ -56,6 +56,7 @@ namespace minimalApi_test.Controllers
         [Route("BuyTicket/{id}/{qta}")]
         public IEnumerable<object> BuyTicket(string id, int qta)
         {
+            _requestsCounter.IncrementRequest();
             _inputBuyTicket.searchTicket(id, qta);
             return _inputBuyTicket.getTicketsList();
         }
