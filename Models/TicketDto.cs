@@ -7,6 +7,8 @@ namespace minimalApi_test.Models
 		public string  TicketDescription	{ get; set; }
 		public string  Route				{ get; set; }
 		public decimal Price				{ get; set; }
+
+		public int	   Quantity				{ get; set; }
 	}
 }
 

@@ -9,9 +9,8 @@ namespace minimalApi_test.Controllers
     [Route("[controller]")]
     public class TicketController : ControllerBase
     {
-        private readonly DbController _dbController;
-        private readonly string _connectionString;
         private readonly IRequestsCounter _requestsCounter;
+        private readonly IOutputError _outputError;
         private readonly IDataManager _dataManager;
         private readonly IConfiguration _configuration;
         private readonly IOutputGetTickets _outputGetTickets;
@@ -24,32 +23,39 @@ namespace minimalApi_test.Controllers
                                 IDataManager dataManager,
                                 IOutputGetTickets outputGetTickets,
                                 IInputBuyTickets inputBuyTicket,
-                                IOutputBuyTickets outputBuyTickets)
+                                IOutputBuyTickets outputBuyTickets,
+                                IOutputError outputError)
         {
             _configuration = configuration;
-            _connectionString = _configuration.GetConnectionString("DefaultConnection");
-            _dbController = new DbController(_connectionString);
             _requestsCounter = requestsCounter;
             _outputGetTickets = outputGetTickets;
             _outputBuyTickets = outputBuyTickets;
+            _outputError = outputError;
             _inputBuyTicket = inputBuyTicket;
             _dataManager = dataManager;
         }
 
         [HttpGet]
         [Route("GetAllTickets")]
-        public IEnumerable<Ticket> GetAllTickets()
+        public IEnumerable<object> GetAllTickets()
         {
             _requestsCounter.IncrementRequest();
-            return _dataManager.getTicketList();
+            _dataManager.getTicketList();
+            if (_dataManager.getTicketList().Count == 0)
+                return _outputError.getError("ERROR_NOT_FOUND", "Errore nel caricamento dei dati.");
+            else
+                return _dataManager.getTicketList();
         }
 
         [HttpGet]
         [Route("GetTickets")]
-        public IEnumerable<TicketDto> GetTickets()
+        public IEnumerable<object> GetTickets()
         {
             _requestsCounter.IncrementRequest();
-            return _outputGetTickets.getTickets();
+            if(_outputGetTickets.getTickets().Count == 0)
+                return _outputError.getError("ERROR_NOT_AVIABLE", "Non ci sono biglietti disponibili.");
+            else
+                return _outputGetTickets.getTickets();
         }
 
         [HttpPost]
@@ -58,7 +64,10 @@ namespace minimalApi_test.Controllers
         {
             _requestsCounter.IncrementRequest();
             _inputBuyTicket.searchTicket(id, qta);
-            return _inputBuyTicket.getTicketsList();
+            if(_inputBuyTicket.getTicketsList().Count == 0)
+                return _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
+            else     
+                return _inputBuyTicket.getTicketsList();
         }
     }
 }

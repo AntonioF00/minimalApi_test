@@ -12,16 +12,21 @@ namespace minimalApi_test.Components
 
         public List<object> GetTicket(TicketDto ticket, int quantity)
         {
-            _ticketId = ticket.TicketId;
-            _payedAmout = (ticket.Price * quantity);
-            return new List<object>()
+            List<object> res = new List<object>();
+            if(ticket != null)
             {
-                new Dictionary<string,object>()
+                _ticketId = ticket.TicketId;
+                _payedAmout = (ticket.Price * quantity);
+                res = new List<object>()
                 {
-                    ["TicketId"] = _ticketId,
-                    ["PayedAmount"] = _payedAmout
-                }
-            };
+                    new Dictionary<string,object>()
+                    {
+                        ["TicketId"] = _ticketId,
+                        ["PayedAmount"] = _payedAmout
+                    }
+                };
+            }
+            return res;
         }
     }
 }

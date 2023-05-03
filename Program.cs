@@ -14,6 +14,7 @@ builder.Services.AddSingleton<IDataManager, DataManager>();
 builder.Services.AddSingleton<IOutputGetTickets, OutputGetTickets>();
 builder.Services.AddSingleton<IInputBuyTickets, InputBuyTickets>();
 builder.Services.AddSingleton<IOutputBuyTickets, OutputBuyTickets>();
+builder.Services.AddSingleton<IOutputError, OutputError>();
 
 var app = builder.Build();
 
