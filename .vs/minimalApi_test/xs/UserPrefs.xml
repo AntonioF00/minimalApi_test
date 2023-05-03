@@ -5,21 +5,19 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="minimalApi_test.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TicketController.cs">
     <Files>
-      <File FileName="Controllers/TicketController.cs" Line="73" Column="2" />
+      <File FileName="Controllers/TicketController.cs" Line="51" Column="30" />
       <File FileName="appsettings.json" Line="7" Column="5" />
       <File FileName="Models/Ticket.cs" Line="7" Column="16" />
-      <File FileName="minimalApi_test.csproj" Line="1" Column="1" />
+      <File FileName="minimalApi_test.csproj" Line="10" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="minimalApi_test" expanded="True">
-            <Node name="minimalApi_test" expanded="True" selected="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
+            <Node name="minimalApi_test" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="Components" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Enums" expanded="True" />
