@@ -8,6 +8,7 @@ namespace minimalApi_test.Components
 	public class DataManager : IDataManager
 	{
         private List<Ticket> _ticketsList;
+        private int _counter;
 
 		public DataManager()
 		{
@@ -20,10 +21,11 @@ namespace minimalApi_test.Components
             var _rnd = new Random(DateTime.Now.Microsecond);
             for (int i = 0; i < 10; i++)
             {
+                _counter++;
                 var t = new Ticket
                 {
-                    Id = Guid.NewGuid(),
-                    Name = $"TICKET-{i}",
+                    Id = $"TCKATMA{_counter.ToString().PadLeft(3,'0')}",
+                    Description = $"Biglietto tratta {$"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"}",
                     Price = _rnd.Next(),
                     Route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"
                 };
