@@ -14,24 +14,51 @@ namespace minimalApi_test.Controllers
         private readonly IRequestsCounter _requestsCounter;
         private readonly IDataManager _dataManager;
         private readonly IConfiguration _configuration;
+        private readonly IOutputGetTickets _outputGetTickets;
+        private readonly IInputBuyTickets _inputBuyTicket;
+        private readonly IOutputBuyTickets _outputBuyTickets;
 
-        public TicketController(IConfiguration configuration, IRequestsCounter requestsCounter, IDataManager dataManager)
-		{
+
+        public TicketController(IConfiguration configuration,
+                                IRequestsCounter requestsCounter,
+                                IDataManager dataManager,
+                                IOutputGetTickets outputGetTickets,
+                                IInputBuyTickets inputBuyTicket,
+                                IOutputBuyTickets outputBuyTickets)
+        {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("DefaultConnection");
             _dbController = new DbController(_connectionString);
             _requestsCounter = requestsCounter;
+            _outputGetTickets = outputGetTickets;
+            _outputBuyTickets = outputBuyTickets;
+            _inputBuyTicket = inputBuyTicket;
             _dataManager = dataManager;
-		}
+        }
 
         [HttpGet]
-        [Route("GetTickets")]
-        public IEnumerable<Ticket> GetTicket()
+        [Route("GetAllTickets")]
+        public IEnumerable<Ticket> GetAllTickets()
         {
             _requestsCounter.IncrementRequest();
             return _dataManager.getTicketList();
         }
 
+        [HttpGet]
+        [Route("GetTickets")]
+        public IEnumerable<TicketDto> GetTickets()
+        {
+            _requestsCounter.IncrementRequest();
+            return _outputGetTickets.getTickets();
+        }
+
+        [HttpPost]
+        [Route("BuyTicket/{id}/{qta}")]
+        public IEnumerable<object> BuyTicket(string id, int qta)
+        {
+            _inputBuyTicket.searchTicket(id, qta);
+            return _inputBuyTicket.getTicketsList();
+        }
     }
 }
 

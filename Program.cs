@@ -1,4 +1,5 @@
 ﻿using minimalApi_test.Components;
+using minimalApi_test.Datas;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddSwaggerGen();
 //add components
 builder.Services.AddSingleton<IRequestsCounter, RequestsCounter>();
 builder.Services.AddSingleton<IDataManager, DataManager>();
+builder.Services.AddSingleton<IOutputGetTickets, OutputGetTickets>();
+builder.Services.AddSingleton<IInputBuyTickets, InputBuyTickets>();
+builder.Services.AddSingleton<IOutputBuyTickets, OutputBuyTickets>();
 
 var app = builder.Build();
 

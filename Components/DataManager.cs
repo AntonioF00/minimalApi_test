@@ -27,7 +27,8 @@ namespace minimalApi_test.Components
                     Id = $"TCKATMA{_counter.ToString().PadLeft(3,'0')}",
                     Description = $"Biglietto tratta {$"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"}",
                     Price = _rnd.Next(),
-                    Route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"
+                    Route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}",
+                    Aviable = _rnd.Next(2) == 1
                 };
                 _ticketsList.Add(t);
             }
@@ -38,5 +39,6 @@ namespace minimalApi_test.Components
             return _ticketsList;
         }
     }
+
 }
 
