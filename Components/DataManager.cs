@@ -49,7 +49,16 @@ namespace minimalApi_test.Components
                 {
                     if(e.Quantity == 0)
                     {
-                        e.Aviable = false;
+                        _ticketsList.Remove(e);
+                        _ticketsList.Add(new Ticket()
+                        {
+                            Id = e.Id,
+                            Description = e.Description,
+                            Route = e.Route,
+                            Price = e.Price,
+                            Quantity = e.Quantity,
+                            Aviable = false
+                        });
                         break;
                     }
                 }
@@ -64,13 +73,31 @@ namespace minimalApi_test.Components
                 {
                     if (command.ToUpper().Equals("I"))
                     {
-                        e.Quantity = e.Quantity + qta;
+                        _ticketsList.Remove(e);
+                        _ticketsList.Add(new Ticket()
+                        {
+                            Id = e.Id,
+                            Description = e.Description,
+                            Route = e.Route,
+                            Price = e.Price,
+                            Quantity = e.Quantity + qta,
+                            Aviable = e.Aviable
+                        });
                         break;
                     }
 
                     else if (command.ToUpper().Equals("D"))
                     {
-                        e.Quantity = e.Quantity - qta;
+                        _ticketsList.Remove(e);
+                        _ticketsList.Add(new Ticket()
+                        {
+                            Id = e.Id,
+                            Description = e.Description,
+                            Route = e.Route,
+                            Price = e.Price,
+                            Quantity = e.Quantity - qta,
+                            Aviable = e.Aviable
+                        });
                         break;
                     }
                 }

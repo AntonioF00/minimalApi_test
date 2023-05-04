@@ -43,7 +43,8 @@ namespace minimalApi_test.Components
             List<TicketDto> list = _outputGetTickets.getTickets();
 
             //cerco il ticket scelto
-            list.ForEach(e => {
+            foreach(var e in list)
+            {
                 try
                 {
                     //se lo trovo lo imposto in una variabile
@@ -52,8 +53,9 @@ namespace minimalApi_test.Components
                         if(e.Quantity >= _quantity)
                         {
                             _ticket = e;
-                            _dataManager.ChangeAviable(_ticketId);
                             _dataManager.ChangeQuantity("D", _quantity, _ticketId);
+                            _dataManager.ChangeAviable(_ticketId);
+                            break;
                         }
                     }
                 }
@@ -61,7 +63,7 @@ namespace minimalApi_test.Components
                 {
                     LogHelper.Log(ex.Message);
                 }    
-            });
+            }
 
             //salvo il risultato della richiesta in una lista che sarà il mio
             //valore di ritorno

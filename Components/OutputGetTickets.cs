@@ -10,12 +10,12 @@ namespace minimalApi_test.Datas
 
 		public OutputGetTickets(IDataManager dataManager)
 		{
-            _ticketsDtoList = new List<TicketDto>();
             _dataManager = dataManager;
 		}
 
         public List<TicketDto> getTickets()
         { 
+            _ticketsDtoList = new List<TicketDto>();
             Initialize();
             return _ticketsDtoList;
         }
@@ -25,7 +25,7 @@ namespace minimalApi_test.Datas
             List<Ticket> list = _dataManager.getTicketList();
 
             list.ForEach(e => {
-                if (e.Aviable)
+                if ((e.Aviable) && (e.Quantity > 0))
                     _ticketsDtoList.Add(new TicketDto
                     {
                         TicketId = e.Id,
