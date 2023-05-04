@@ -5,17 +5,19 @@ using minimalApi_test.Models;
 
 namespace minimalApi_test.Controllers
 {
+    //controller che esporrà le API del progetto
     [ApiController]
     [Route("[controller]")]
     public class TicketController : ControllerBase
     {
-        private readonly IRequestsCounter _requestsCounter;
-        private readonly IOutputError _outputError;
-        private readonly IDataManager _dataManager;
-        private readonly IConfiguration _configuration;
-        private readonly IOutputGetTickets _outputGetTickets;
-        private readonly IInputBuyTickets _inputBuyTicket;
-        private readonly IOutputBuyTickets _outputBuyTickets;
+        //dichiarazione delle variabili locali
+        private readonly IRequestsCounter _requestsCounter;     //Interfaccia IRequestCounter
+        private readonly IOutputError _outputError;             //Interfaccia IOutputError
+        private readonly IDataManager _dataManager;             //Interfaccia IDataManager
+        private readonly IConfiguration _configuration;         //Interfaccia IConfiguration
+        private readonly IOutputGetTickets _outputGetTickets;   //Interfaccia IOutputGetTickets
+        private readonly IInputBuyTickets _inputBuyTicket;      //Interfaccia IInputBuyTickets
+        private readonly IOutputBuyTickets _outputBuyTickets;   //Interfaccia IOutputBuyTickets
 
         public TicketController(IConfiguration configuration,
                                 IRequestsCounter requestsCounter,
@@ -25,6 +27,7 @@ namespace minimalApi_test.Controllers
                                 IOutputBuyTickets outputBuyTickets,
                                 IOutputError outputError)
         {
+            //inizializzo le variabili locali
             _configuration = configuration;
             _requestsCounter = requestsCounter;
             _outputGetTickets = outputGetTickets;
@@ -34,7 +37,8 @@ namespace minimalApi_test.Controllers
             _dataManager = dataManager;
         }
 
-        //migliorare la gestione degli errori, con questi return non mi piace troppo
+        //API che restituisce tutti i ticket senza tenere conto dello stato di disponibilità
+        //gli errori verranno gestiti tramite l'oggetto OutputError
         [HttpGet]
         [Route("GetAllTickets")]
         public IEnumerable<object> GetAllTickets()
@@ -47,6 +51,8 @@ namespace minimalApi_test.Controllers
                 return res;
         }
 
+        //API che restituisce tutti i ticket la cui disponibilità è pari a true
+        //gli errori verranno gestiti tramite l'oggetto OutputError
         [HttpGet]
         [Route("GetTickets")]
         public IEnumerable<object> GetTickets()
@@ -59,6 +65,8 @@ namespace minimalApi_test.Controllers
                 return res;
         }
 
+        //API che in base ai valori in ingresso id, qta, restituisce il biglietto ed il relativo costo
+        //gli errori verranno gestiti tramite l'oggetto OutputError
         [HttpPost]
         [Route("GetTickets/{id}/{qta}")]
         public IEnumerable<object> BuyTicket(string id, int qta)

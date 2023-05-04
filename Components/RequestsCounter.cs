@@ -1,5 +1,6 @@
 ﻿namespace minimalApi_test.Components
 {
+    //classe che gestisce il numero di richieste API effettuate
     public class RequestsCounter : IRequestsCounter
     {
         private int _numOfRequests;

@@ -3,6 +3,10 @@ using minimalApi_test.Models;
 
 namespace minimalApi_test.Datas
 {
+    //Classe che gestisce i ticket disponibili all'interno del sistema
+    //relazionandosi ai ticket totali del sistema, filtra quelli per cui
+    //la disponibilità è pari a true e li memorizza
+    //fornendo la possibilità di ottenere la lista memorizzata.
     public class OutputGetTickets : IOutputGetTickets
 	{
         private List<TicketDto> _ticketsDtoList;

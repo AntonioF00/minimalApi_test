@@ -4,6 +4,12 @@ using minimalApi_test.Models;
 
 namespace minimalApi_test.Components
 {
+    //Classe che si occupa dell'intera gestione d'acquisto d'uno o piu' biglietto
+    //si preoccupa di cercare il biglietto, controllando se quest'utlimo esiste e
+    //inoltre, controlla la possibilità d'acquisto sulla base delle quantità messe
+    //a disposizione del biglietto stesso, interpella qualora ci fosse un esito positivo
+    //la classe gestore delle informazioni per decurtare le quantità acquistate da quelle
+    //totali
 	public class InputBuyTickets : IInputBuyTickets
 	{
 		private readonly IOutputGetTickets _outputGetTickets;
