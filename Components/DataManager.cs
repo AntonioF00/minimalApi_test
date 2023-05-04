@@ -24,11 +24,12 @@ namespace minimalApi_test.Components
                 _counter++;
                 var t = new Ticket
                 {
-                    Id = $"TCKATMA{_counter.ToString().PadLeft(3,'0')}",
+                    Id = $"TCKATMA{_counter.ToString().PadLeft(3, '0')}",
                     Description = $"Biglietto tratta {$"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}"}",
                     Price = new decimal(_rnd.NextSingle()),
                     Route = $"{RandomEnumValue<Citys>()} - {RandomEnumValue<Citys>()}",
-                    Aviable = _rnd.Next(2) == 1
+                    Aviable = _rnd.Next(2) == 1,
+                    Quantity = (int)_rnd.NextInt64(1,5)
                 };
                 _ticketsList.Add(t);
             }
@@ -45,6 +46,20 @@ namespace minimalApi_test.Components
             {
                 if (e.Id.Equals(id))
                     e.Aviable = false;
+            }
+        }
+
+        public void ChangeQuantity(string command, int qta, string ticketId)
+        {
+            foreach (var e in _ticketsList)
+            {
+                if (e.Id.Equals(ticketId))
+                {
+                    if (command.ToUpper().Equals('I'))
+                        e.Quantity += qta;
+                    else if (command.ToUpper().Equals('D'))
+                        e.Quantity -= qta;
+                }
             }
         }
     }

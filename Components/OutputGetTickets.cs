@@ -25,13 +25,14 @@ namespace minimalApi_test.Datas
             List<Ticket> list = _dataManager.getTicketList();
 
             list.ForEach(e => {
-                if(e.Aviable)
+                if (e.Aviable)
                     _ticketsDtoList.Add(new TicketDto
                     {
                         TicketId = e.Id,
                         Price = e.Price,
                         Route = e.Route,
-                        TicketDescription = e.Description
+                        TicketDescription = e.Description,
+                        Quantity = e.Quantity
                     });
             });
         }

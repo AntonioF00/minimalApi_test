@@ -49,8 +49,12 @@ namespace minimalApi_test.Components
                     //se lo trovo lo imposto in una variabile
                     if (e.TicketId.Equals(_ticketId))
                     {
-                        _ticket = e;
-                        _dataManager.ChangeAviable(_ticketId);
+                        if(e.Quantity <= _quantity)
+                        {
+                            _ticket = e;
+                            _dataManager.ChangeAviable(_ticketId);
+                            _dataManager.ChangeQuantity("D", _quantity, _ticketId);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -62,8 +66,6 @@ namespace minimalApi_test.Components
             //salvo il risultato della richiesta in una lista che sarà il mio
             //valore di ritorno
             _ticketBuyList = _outputBuyTickets.GetTicket(_ticket,_quantity);
-
-
         }
     }
 }

@@ -59,15 +59,22 @@ namespace minimalApi_test.Controllers
         }
 
         [HttpPost]
-        [Route("BuyTicket/{id}/{qta}")]
+        [Route("GetTickets/{id}/{qta}")]
         public IEnumerable<object> BuyTicket(string id, int qta)
         {
             _requestsCounter.IncrementRequest();
             _inputBuyTicket.searchTicket(id, qta);
-            if(_inputBuyTicket.getTicketsList().Count == 0)
-                return _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
-            else     
-                return _inputBuyTicket.getTicketsList();
+            if(!string.IsNullOrWhiteSpace(_inputBuyTicket.GetTicketDto().TicketId))
+            {
+                if(_inputBuyTicket.getTicketsList().Count == 0)
+                    return _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
+                else     
+                    return _inputBuyTicket.getTicketsList();
+            }
+            else
+            {
+                return _outputError.getError("ERROR_QUANTITY", "Non ci sono biglietti a sufficenza per la quantità indicata.");
+            }
         }
     }
 }
