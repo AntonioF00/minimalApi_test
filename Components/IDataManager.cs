@@ -27,6 +27,7 @@ namespace minimalApi_test.Components
 		/// <param name="qta">quantità </param>
 		/// <param name="ticketID">ticket id</param>
 		public void ChangeQuantity(string command, int qta, string ticketID);
+
 	}
 }
 
