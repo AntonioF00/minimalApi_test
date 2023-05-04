@@ -40,11 +40,11 @@ namespace minimalApi_test.Controllers
         public IEnumerable<object> GetAllTickets()
         {
             _requestsCounter.IncrementRequest();
-            _dataManager.getTicketList();
-            if (_dataManager.getTicketList().Count == 0)
+            var res = _dataManager.getTicketList();
+            if (res.Count == 0)
                 return _outputError.getError("ERROR_NOT_FOUND", "Errore nel caricamento dei dati.");
             else
-                return _dataManager.getTicketList();
+                return res;
         }
 
         [HttpGet]
@@ -52,10 +52,11 @@ namespace minimalApi_test.Controllers
         public IEnumerable<object> GetTickets()
         {
             _requestsCounter.IncrementRequest();
-            if(_outputGetTickets.getTickets().Count == 0)
+            var res = _outputGetTickets.getTickets();
+            if (res.Count == 0)
                 return _outputError.getError("ERROR_NOT_AVIABLE", "Non ci sono biglietti disponibili.");
             else
-                return _outputGetTickets.getTickets();
+                return res;
         }
 
         [HttpPost]
@@ -64,12 +65,14 @@ namespace minimalApi_test.Controllers
         {
             _requestsCounter.IncrementRequest();
             _inputBuyTicket.searchTicket(id, qta);
-            if(!string.IsNullOrWhiteSpace(_inputBuyTicket.GetTicketDto().TicketId))
+            var res = _inputBuyTicket.GetTicketDto();
+            if (!string.IsNullOrWhiteSpace(res.TicketId))
             {
-                if(_inputBuyTicket.getTicketsList().Count == 0)
+                var r = _inputBuyTicket.getTicketsList();
+                if (r.Count == 0)
                     return _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
                 else     
-                    return _inputBuyTicket.getTicketsList();
+                    return r;
             }
             else
             {

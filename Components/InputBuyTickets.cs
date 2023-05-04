@@ -49,7 +49,7 @@ namespace minimalApi_test.Components
                     //se lo trovo lo imposto in una variabile
                     if (e.TicketId.Equals(_ticketId))
                     {
-                        if(e.Quantity <= _quantity)
+                        if(e.Quantity >= _quantity)
                         {
                             _ticket = e;
                             _dataManager.ChangeAviable(_ticketId);

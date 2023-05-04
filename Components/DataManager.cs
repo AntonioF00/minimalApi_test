@@ -7,7 +7,7 @@ namespace minimalApi_test.Components
     //implementazione classe per l'accesso dei dati che estende l'interfaccia IDataManager
 	public class DataManager : IDataManager
 	{
-        private List<Ticket> _ticketsList;
+        private List<Ticket> _ticketsList { get; set; }
         private int _counter;
 
 		public DataManager()
@@ -33,6 +33,7 @@ namespace minimalApi_test.Components
                 };
                 _ticketsList.Add(t);
             }
+            _counter = 0;
         }
 
         public List<Ticket> getTicketList()
@@ -45,7 +46,13 @@ namespace minimalApi_test.Components
             foreach(var e in _ticketsList)
             {
                 if (e.Id.Equals(id))
-                    e.Aviable = false;
+                {
+                    if(e.Quantity == 0)
+                    {
+                        e.Aviable = false;
+                        break;
+                    }
+                }
             }
         }
 
@@ -55,10 +62,17 @@ namespace minimalApi_test.Components
             {
                 if (e.Id.Equals(ticketId))
                 {
-                    if (command.ToUpper().Equals('I'))
-                        e.Quantity += qta;
-                    else if (command.ToUpper().Equals('D'))
-                        e.Quantity -= qta;
+                    if (command.ToUpper().Equals("I"))
+                    {
+                        e.Quantity = e.Quantity + qta;
+                        break;
+                    }
+
+                    else if (command.ToUpper().Equals("D"))
+                    {
+                        e.Quantity = e.Quantity - qta;
+                        break;
+                    }
                 }
             }
         }

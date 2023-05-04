@@ -12,11 +12,11 @@ namespace minimalApi_test.Datas
 		{
             _ticketsDtoList = new List<TicketDto>();
             _dataManager = dataManager;
-            Initialize();
 		}
 
         public List<TicketDto> getTickets()
-        {
+        { 
+            Initialize();
             return _ticketsDtoList;
         }
 
