@@ -20,7 +20,6 @@ namespace minimalApi_test.Components
         private TicketDto _ticket;
         private List<object> _ticketBuyList;
 
-
 		public InputBuyTickets(IOutputGetTickets outputGetTickets,
                               IOutputBuyTickets outputBuyTicket,
                               IDataManager dataManager)
@@ -42,6 +41,7 @@ namespace minimalApi_test.Components
 
         public void searchTicket(string id, int qta)
         {
+            _ticket = new TicketDto();
             _ticketId = id;
             _quantity = qta;
 
@@ -56,24 +56,33 @@ namespace minimalApi_test.Components
                     //se lo trovo lo imposto in una variabile
                     if (e.TicketId.Equals(_ticketId))
                     {
-                        if(e.Quantity >= _quantity)
+                        if (e.Quantity >= _quantity && _quantity != 0)
                         {
                             _ticket = e;
                             _dataManager.ChangeQuantity("D", _quantity, _ticketId);
                             _dataManager.ChangeAviable(_ticketId);
-                            break;
                         }
+                        else
+                        {
+                            _ticket = new TicketDto() { TicketId = "N" };
+                        }
+                        break;
                     }
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Log(ex.Message);
+                    LogHelper.Log($"Exception : {ex.Message} | Where : InputBuyTickets/SearchTicket");
                 }    
             }
-
-            //salvo il risultato della richiesta in una lista che sarà il mio
-            //valore di ritorno
-            _ticketBuyList = _outputBuyTickets.GetTicket(_ticket,_quantity);
+            if (_ticket == null)
+            {
+                _ticketBuyList = new List<object>();
+                _ticket = new TicketDto() { TicketId = ""};
+            }
+            else
+            {
+                _ticketBuyList = _outputBuyTickets.GetTicket(_ticket,_quantity);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using minimalApi_test.Components;
 using minimalApi_test.Datas;
+using minimalApi_test.Loggers;
 using minimalApi_test.Models;
 
 namespace minimalApi_test.Controllers
@@ -43,12 +44,21 @@ namespace minimalApi_test.Controllers
         [Route("GetAllTickets")]
         public IEnumerable<object> GetAllTickets()
         {
-            _requestsCounter.IncrementRequest();
-            var res = _dataManager.getTicketList();
-            if (res.Count == 0)
-                return _outputError.getError("ERROR_NOT_FOUND", "Errore nel caricamento dei dati.");
-            else
+            try
+            {
+                _requestsCounter.IncrementRequest();
+                var res = _dataManager.getTicketList();
+                if (res.Count == 0)
+                {
+                    return _outputError.getError("ERROR_NOT_FOUND", "Errore nel caricamento dei dati.");
+                }
                 return res;
+            }
+            catch(Exception ex)
+            {
+                LogHelper.Log($"Exception : {ex.Message} | API: GetAllTickets");
+                return new List<TicketDto>();
+            }
         }
 
         //API che restituisce tutti i ticket la cui disponibilità è pari a true
@@ -57,12 +67,21 @@ namespace minimalApi_test.Controllers
         [Route("GetTickets")]
         public IEnumerable<object> GetTickets()
         {
-            _requestsCounter.IncrementRequest();
-            var res = _outputGetTickets.getTickets();
-            if (res.Count == 0)
-                return _outputError.getError("ERROR_NOT_AVIABLE", "Non ci sono biglietti disponibili.");
-            else
+            try
+            {
+                _requestsCounter.IncrementRequest();
+                var res = _outputGetTickets.getTickets();
+                if (res.Count == 0)
+                {
+                    return _outputError.getError("ERROR_NOT_AVIABLE", "Non ci sono biglietti disponibili.");
+                }
                 return res;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log($"Exception : {ex.Message} | API: GetTickets");
+                return new List<TicketDto>();
+            }
         }
 
         //API che in base ai valori in ingresso id, qta, restituisce il biglietto ed il relativo costo
@@ -71,21 +90,31 @@ namespace minimalApi_test.Controllers
         [Route("GetTickets/{id}/{qta}")]
         public IEnumerable<object> BuyTicket(string id, int qta)
         {
-            _requestsCounter.IncrementRequest();
-            _inputBuyTicket.searchTicket(id, qta);
-            var res = _inputBuyTicket.GetTicketDto();
-            if (!string.IsNullOrWhiteSpace(res.TicketId))
+            var result = new List<object>();
+            try
             {
-                var r = _inputBuyTicket.getTicketsList();
-                if (r.Count == 0)
-                    return _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
-                else     
-                    return r;
+                _requestsCounter.IncrementRequest();
+                _inputBuyTicket.searchTicket(id, qta);
+                var res = _inputBuyTicket.GetTicketDto();
+                if (res != null)
+                {
+                    var r = _inputBuyTicket.getTicketsList();
+                    if (r.Count == 0)
+                    {
+                        if(res.TicketId.Equals("N"))
+                            result = _outputError.getError("ERROR_QUANTITY", "Non ci sono biglietti a sufficenza per la quantità richiesta.");
+                        else
+                            result =  _outputError.getError("ERROR_TICKETID", "Non ci sono biglietti corrispondenti a quell'id.");
+                    }
+                    else if (r.Count > 0)     
+                        result =  r;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                return _outputError.getError("ERROR_QUANTITY", "Non ci sono biglietti a sufficenza per la quantità indicata.");
+                LogHelper.Log($"Exception : {ex.Message} | API: GetTickets/id/qta");
             }
+            return result;
         }
     }
 }

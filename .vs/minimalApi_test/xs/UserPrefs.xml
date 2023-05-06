@@ -1,14 +1,30 @@
 ﻿<Properties StartupConfiguration="{DE6E17C7-153C-4EAC-B79C-5DB6AD3FE574}|https">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Components/IDataManager.cs">
+  <MonoDevelop.Ide.ItemProperties.minimalApi__test PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/antonioflorio/Projects/minimalApi_test/Components/OutputBuyTickets.cs" relfile="Components/OutputBuyTickets.cs" line="19" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Components/OutputBuyTickets.cs">
     <Files>
       <File FileName="Components/IDataManager.cs" Line="30" Column="1" />
+      <File FileName="Components/OutputBuyTickets.cs" Line="21" Column="31" />
+      <File FileName="Components/InputBuyTickets.cs" Line="44" Column="1" />
+      <File FileName="Controllers/TicketController.cs" Line="81" Column="33" />
+      <File FileName="Components/IOutputBuyTickets.cs" Line="14" Column="23" />
+      <File FileName="Program.cs" Line="32" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="minimalApi_test" expanded="True">
             <Node name="minimalApi_test" expanded="True">
-              <Node name="Components" expanded="True" />
+              <Node name="Components" expanded="True">
+                <Node name="OutputBuyTickets.cs" selected="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="Enums" expanded="True" />
               <Node name="Loggers" expanded="True" />
@@ -19,11 +35,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.minimalApi__test PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
