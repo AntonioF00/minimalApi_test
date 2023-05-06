@@ -42,6 +42,7 @@ namespace minimalApi_test.Components
         public void searchTicket(string id, int qta)
         {
             _ticket = new TicketDto();
+            _ticketBuyList = new List<object>();
             _ticketId = id;
             _quantity = qta;
 
@@ -51,32 +52,24 @@ namespace minimalApi_test.Components
             //cerco il ticket scelto
             foreach(var e in list)
             {
-                try
+                //se lo trovo lo imposto in una variabile
+                if (e.TicketId.Equals(_ticketId))
                 {
-                    //se lo trovo lo imposto in una variabile
-                    if (e.TicketId.Equals(_ticketId))
+                    if (e.Quantity >= _quantity)
                     {
-                        if (e.Quantity >= _quantity && _quantity != 0)
-                        {
-                            _ticket = e;
-                            _dataManager.ChangeQuantity("D", _quantity, _ticketId);
-                            _dataManager.ChangeAviable(_ticketId);
-                        }
-                        else
-                        {
-                            _ticket = new TicketDto() { TicketId = "N" };
-                        }
-                        break;
+                        _ticket = e;
+                        _dataManager.ChangeQuantity("D", _quantity, _ticketId);
+                        _dataManager.ChangeAviable(_ticketId);
                     }
+                    else if (e.Quantity < _quantity || _quantity == 0)
+                    {
+                        _ticket = new TicketDto() { TicketId = "N" };
+                    }
+                    break;
                 }
-                catch (Exception ex)
-                {
-                    LogHelper.Log($"Exception : {ex.Message} | Where : InputBuyTickets/SearchTicket");
-                }    
             }
             if (_ticket == null)
             {
-                _ticketBuyList = new List<object>();
                 _ticket = new TicketDto() { TicketId = ""};
             }
             else
