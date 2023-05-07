@@ -41,7 +41,7 @@ namespace minimalApi_test.Components
 
         public void searchTicket(string id, int qta)
         {
-            _ticket = new TicketDto();
+            _ticket = null;
             _ticketBuyList = new List<object>();
             _ticketId = id;
             _quantity = qta;
