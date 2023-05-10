@@ -43,25 +43,20 @@ namespace minimalApi_test.Components
 
         public void ChangeAviable(string id)
         {
-            foreach(var e in _ticketsList)
+            try
             {
-                if (e.Id.Equals(id))
+                var e = _ticketsList.FirstOrDefault(x => x.Id.Equals(id));
+                if (e != null)
                 {
-                    if(e.Quantity == 0)
+                    if (e.Quantity == 0)
                     {
-                        _ticketsList.Remove(e);
-                        _ticketsList.Add(new Ticket()
-                        {
-                            Id = e.Id,
-                            Description = e.Description,
-                            Route = e.Route,
-                            Price = e.Price,
-                            Quantity = e.Quantity,
-                            Aviable = false
-                        });
-                        break;
+                        e.Aviable = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 

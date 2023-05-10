@@ -36,3 +36,4 @@
 /Users/antonioflorio/Projects/minimalApi_test/obj/Debug/net7.0/minimalApi_test.pdb
 /Users/antonioflorio/Projects/minimalApi_test/obj/Debug/net7.0/minimalApi_test.genruntimeconfig.cache
 /Users/antonioflorio/Projects/minimalApi_test/obj/Debug/net7.0/ref/minimalApi_test.dll
+/Users/antonioflorio/Projects/minimalApi_test/bin/Debug/net7.0/Npgsql.dll

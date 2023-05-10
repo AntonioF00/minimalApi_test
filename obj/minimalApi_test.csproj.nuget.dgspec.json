@@ -40,7 +40,11 @@
           "dependencies": {
             "Microsoft.OpenApi": {
               "target": "Package",
-              "version": "[1.6.3, )"
+              "version": "[1.6.4, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

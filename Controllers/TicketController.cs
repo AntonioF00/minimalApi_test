@@ -87,7 +87,7 @@ namespace minimalApi_test.Controllers
         //API che in base ai valori in ingresso id, qta, restituisce il biglietto ed il relativo costo
         //gli errori verranno gestiti tramite l'oggetto OutputError
         [HttpPost]
-        [Route("GetTickets/{id}/{qta}")]
+        [Route("BuyTicket/{id}/{qta}")]
         public IEnumerable<object> BuyTicket(string id, int qta)
         {
             var result = new List<object>();
